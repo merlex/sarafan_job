@@ -1,0 +1,73 @@
+<div class="">
+<?
+$this->headMeta()->appendName('keywords', 'framework php productivity');
+if ($this->post){
+	?>
+<div class="post_info clearfix" title="">
+Вы перешли на эту страницу по приглащению пользователя <a href="<? echo $this->post->user->url;?>"><? echo $this->post->user->name;?></a><br/>
+Если вы устроитесь на эту работу, не забудьте рассказать об этом работодателю, <a href="<?=$this->url(array('controller'=>'facebook'),null,true);?>" title="Ссылка на правила">а что после этого будет?</a>
+</div>
+	<?
+}
+?>
+<h1><?php echo $this->ad->title;?></h1>
+<?
+if ($this->ad->price){
+?>
+<div class="salary"><? echo $this->ad->price;?> руб</div>
+<?
+}
+?>
+<div class="details">
+	<? echo $this->ad->body;?>
+</div>
+</div>
+<?
+if ($this->auth=='no'){
+	?>
+<div class="contacts"><a href="<?php echo $this->AuthReadURL;?>" target="_top">Посмотреть контактную информацию</a></div>
+	<?
+}
+else{
+	?>
+<div class="contacts info">
+<?
+echo $this->ad->contacts;
+?>
+</div>
+	<?
+	if ($this->auth=='write'){
+		if ($this->myPost){
+			?><div class="post_stat">
+			<a href="<? echo $this->myPost->url;?>" target="_top">Ссылка опубликована на вашей стене</a>
+			<?
+			if ($this->myPost->visitsCount){
+			?>
+			Количество переходов: <?=$this->myPost->visitsCount;?>. <a href="<?=$this->url(array('controller'=>'facebook','action'=>'stat','id'=>$this->myPost->id));?>">Статистика</a>
+			<?
+			}
+			else {
+			?>
+			Пока никто по вашей ссылке не приходил
+			<?
+			}
+			?>
+			</div>			
+			<?
+		}
+		else {
+			include_once dirname(__FILE__).'/repost.phtml';
+		}
+	}
+	else {
+		?>
+		<div class="start_post">
+Кстати, вы можете устроить своего знакомого на эту работу.<br/>
+<a href="<? echo $this->AuthPostURL;?>" target="_top">Разместите ссылку</a> на вакансию к себе в профиль.<br/> 
+Если на работу устроится человек, пришедший по вашей ссылке - вы получите 100 долларов от работодателя.		
+		</div>
+		
+		<?
+	}
+}
+?>

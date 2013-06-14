@@ -1,0 +1,100 @@
+<h2>Объявления</h2>
+
+<ul class="groupActions h clearfix">	
+	<li><a href="/ad/add/">Добавить</a></li>
+	<?php 
+	
+	foreach ($this->show_modes as $modeID=>$modeItem){
+		?><li <? if ($this->show_mode==$modeID){?> class="selected"<?php }?>><a href="<?=$modeItem['url'];?>"><?=$modeItem['title'];?></a></li><?	
+	}
+	
+	?>
+	<li>
+		<form method="GET" action="<?php echo $this->categories_action;?>">
+			&nbsp;<select name="category">
+				<option value="0">Любая категория</option>
+				<?php 
+				foreach ($this->categories as $id=>$cat){
+					?><option value="<?php echo $id;?>"<?php if ($this->categoryID==$id){?> selected="selected"<?}?>><?php echo $cat;?></option><?
+				}
+				?>
+			</select>
+			<input type="submit" value="Отфильтровать">
+		</form>
+	</li>
+</ul>
+
+<table class="list">
+<?php 
+$i=0;
+foreach ($this->list as $e){
+	
+	?>
+	<tr class="line<?=$i%2;?> <?=($e->is_active)?'active':'archive';?>">
+		<td>
+	<a href="<?php echo $this->url(
+    array(
+        'controller' => 'ad',
+        'action'     => 'edit',
+    	'id'=>$e->getID(),
+    ),
+    'default',
+    true);?>"><?php echo mb_substr($e->title,0,100);?></a>
+    </td>
+    <td class="action"><?php echo $e->category_title;?></td>
+    <td class="date"><?=date('d.m.Y H:i:s',$e->create_ts);?></td>
+    <td class="<?=($e->is_active||$e->final_ts)?'delete':'publish';?> action">
+    <?php 
+    if ($e->final_ts){
+    ?>в архиве<?
+    }
+    elseif ($e->is_active){
+    ?>
+    <a href="<?php echo $this->url(
+    array(
+        'controller' => 'ad',
+        'action'     => 'unpublish',
+    	'id'=>$e->getID(),
+    ),
+    'default',
+    true);?>">в архив</a>
+    <?php 
+    }
+    else {
+    ?>
+    <a href="<?php echo $this->url(
+    array(
+        'controller' => 'ad',
+        'action'     => 'publish',
+    	'id'=>$e->getID(),
+    ),
+    'default',
+    true);?>">опубликовать</a>
+    <?	
+    }
+    ?>
+    
+    
+    </td>
+    <td class="action<? if ($e->is_active){?> publish<?}?>">
+    	<a href="<? echo $this->canvasURL;?>ad/id/<?=$e->getID();?>" target="_blank">
+    		<?=($e->is_active)?'опубликовано':'предпросмотр';?>
+    	</a>
+    </td>  
+    <td class="action">
+    <?
+    	if ($e->is_active||$e->final_ts){
+    		?><a href="<? echo $this->url(array('controller'=>'post','ad'=>$e->id),null,true);?>">посты</a><?
+    	}
+    ?>
+    </td>
+    </tr>
+    <?
+    
+    $i++;
+}
+?>
+</table>
+<?php 
+echo $this->pages;
+?>

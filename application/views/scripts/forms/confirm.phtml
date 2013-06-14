@@ -1,0 +1,10 @@
+<?php 
+$form=$this->element;
+?>
+<form action="<?= $this->escape($this->element->getAction());?>" method="<?=$form->getMethod();?>" enctype="<?=$form->getEnctype();?>">
+<?=$form->hash;?>
+<ul class="groupActions h clearfix">
+	<li class="confirm"><?=$form->submit;?></li>
+	<li class="cancel"><a href="<?=$form->cancelURL;?>"><?=$form->cancelText;?></a></li>
+</ul>
+</form>

@@ -1,0 +1,24 @@
+<a href="<?=$this->url(array('cotroller'=>'facebook','action'=>'index'));?>">Sarafan.Job</a>
+<?php
+if ($this->cat){
+	?><h1><? echo $this->cat->title;?></h1><?
+}
+?>
+<ul>
+<?
+foreach ($this->list as $ad){
+	?>
+	<li>
+		<h2><a href="<?=$this->url(array('controller'=>'facebook','action'=>'ad','id'=>$ad->id);?>"><?=$ad->title;?></a></h2>
+		<?
+		if ($ad->price){?><p class="price"><? echo $ad->price;?></p><?}
+		?>
+		<p class="announce"><? echo $ad->announce;?></p>
+	</li>
+	<?
+}
+?>
+</ul>
+<?php 
+echo $this->pages;
+?>

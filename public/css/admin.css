@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+body {font-size: 14pt;}
+ul.h li {list-style: none; float:left; margin:0px 10px 0px 0px;}
+ul.admin_menu {background: #1c1d1d; padding:5px; margin:0px 0px 10px 0px; font-size: 12pt;}
+ul.admin_menu a {color:#d2f2fa;}
+ul.admin_menu a:HOVER {color:#e1f6fc;}
+ul.h {margin:10px 0px; font-size: 12pt;}
+.admin h1 {font-size:18pt; font-style: italic;}
+.admin h2 {font-size:16pt;}
+.admin .list input {font-size: 12pt; width:2em; height: 1em;}
+.admin .list td.date, .admin .list .action {font-size: 12pt; line-height: 16pt;}
+.admin .list .delete a {color:#77001e;}
+.admin .list .publish a {color:#3d7e0e;}
+.admin .list tr.line0 {background: #f9f9f9;}
+.admin .list tr:HOVER {background: #bcbebf;}
+.admin .list td {padding:2px 5px;}
+.admin h2 {margin-bottom: 10px;}
+.admin select {font-size: 12pt;}
+
+.admin .content {margin:20px 30px;}
+.groupActions .selected a {font-weight: bold; text-decoration: none; color:black;} 
+
+.admin p.error, .admin form {}
+.admin dt {font-weight: bold; margin-bottom:5px;}
+.admin dd {font-weight: bold; margin-bottom:10px;}
+.admin .groupActions { line-height: 25px;}
+.admin p.error {color:#77001e; font-weight: bold;}
+
+.zend_form dd input, .zend_form dd select, .zend_form dd textarea{width: 600px;}
+
+.pages {margin-top: 10px; background:#f2f6f6; padding: 5px 0px; font-size: 12pt;}
+.pages li {list-style: none; float: left; margin-right: 5px;}
+.pages .arr {margin-bottom: 10px;}
+.pages .arr li {font-size: 120%;}
+.pages li a {text-decoration: none;}
+.pages li a:HOVER {text-decoration: underline;}
+.pages li.larr {margin:0px 10px 0px 0px;}
+.pages li.rarr {margin:0px 0px 0px 10px;}
+
+.facebook {font-size:10pt;}
+.facebook .steps, .facebook .cat, .facebook .ad {margin:20px 0px;}
+.facebook .cat li, .facebook .ad li {float:left; width:30%;list-style: none;}
+
+#cat-element input {width: auto; margin-right: 10px;}
+#cat-element label {display: block;}
+#message-element textarea {height: 4em;}
+
+.post_info {font-size:10pt; background:#dfe0e1; padding:10px;}
+.comment {background:#ece9ab; font-size:10pt; font-style: italic;padding:5px;}
+.details {font-size:10pt; }
+.contacts {margin:10px 0px; border:3px solid #3B5998; padding:10px;}
+.contacts p {font-size:10pt;}
+.start_post {font-size:12pt; background:#1f8208; padding:10px; color:white; font-weight:bold; margin:10px 0px;}
+.start_post a {color:white;}
+
+#post {font-size:10pt;}
+#post h3 {font-size:10pt; font-weight:bold;}
+#post textarea {width:400px; height:100px;}
+#post {margin:10px 0px; border: 2px solid #1f8209; padding: 5px;}
+
+.postit textarea {height:3em; width:400px;}
+
+.admin form dl {width:40em;}
+.admin form dl input {width:40em;}
+.admin form dl select {width:40em;}
+.admin form dl textarea {width:40em;}
+.admin form dl textarea#announce, .admin form dl textarea#contacts{height:3em;}

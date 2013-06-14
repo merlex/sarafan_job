@@ -1,0 +1,33 @@
+
+<h2>Статистика поста 
+<?
+$post=$this->post;
+if ($post->ad->is_active){
+	?><a href="<? echo $this->url(array('controller'=>'facebook','action'=>'ad','id'=>$post->ad_id));?>"><?=$post->ad->title;?></a><?
+}
+else {
+	?><span class="disabled" title="Снят с публикации"><? echo $post->ad->title;?></span><?
+}
+?></h2>
+<div class="more">
+<a href="<?=$this->url(array('controller'=>'facebook','action'=>'stat'),null,true);?>">Вся статистика</a><br/>
+
+<a href="<?=$this->post->url;?>" target="_top">Ссылка в facebook</a></div>
+<dl class="stat">
+	<dt>Переходов</dt><dd><? echo (int)$this->post->visitsCount;?></dd>
+	<dt>Уникальных</dt><dd><? echo (int)$this->post->uniqueCount;?></dd>	
+</dl>
+<?
+if ($this->post->visitsCount){
+?>
+<h3>Посетители</h3>
+<ul class="stat">
+<?
+foreach ($this->post->visitors as $user){
+?><li><a href="<?=$user->url;?>" target="_top"><?=$user->name;?></a></li><?	
+}
+?>
+</ul>
+<?
+}
+?>

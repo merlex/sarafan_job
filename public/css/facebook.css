@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+/* layout */
+header {float:left; width:225px;}
+header .logo{
+	text-indent: -1000px;
+	background: url("../images/logo.jpg") top left no-repeat;
+	width:221px;
+	height:288px;
+	display:block;	
+	overflow: hidden;
+}
+
+header ul {	
+	margin:2em 0 0 0;
+	padding:0;
+	list-style:none;
+	font-size:0.9em;
+}
+header ul li {
+	margin-top:0.4em;
+	margin-left:0;
+	padding:0;
+}
+
+section.content {
+	float:left;
+	width:475px;
+	padding-left:2em;
+}
+footer {margin:4em 1em 0 0; text-align: right;}
+
+/* system: */
+a {color:#054a4a;}
+
+div.index div {margin:1em 5em 0 0;}
+div.index li {margin:0.4em 5em 0 0;}
+
+.message {margin:2em 0 2em 0;}
+.error {color:#7d070d;}
+
+h1, h2 {font-size:13pt;}
+section.content h1 {margin-bottom:0.2em;}
+.salary {color:gray;}
+.details {margin-top:1em;}
+
+.start_post, .contacts, .repost, .post_stat{margin:1em 1em 0 0; line-height: 1.2em;}
+
+.contacts {border:2px solid #3B5998; padding:8px;}
+.start_post {background:#3B5998; padding:10px; color:white; font-weight:bold;}
+.start_post a {color:white;}
+
+.repost {width:350px;}
+.repost .desc {margin:1em 0em; border-left:1px solid #CCCCCC; padding-left:1em;}
+.repost .postit {background: #F2F2F2; border:1px solid; border-top-color: #CCCCCC; border-right-color: #333333;  border-left-color: #333333;  border-bottom-color: #333333; padding:5px;}
+textarea {height:3em; margin-top:0.4em; width:330px;}
+
+.post_stat {background: #F2F2F2; border:1px solid; border-color: #CCCCCC;padding:5px;}
+#cat-element label {display: block; padding:0.2em;}
+#cat-element br {display: none;}
+.manage dt {margin:0.2em;}
+
+.post_info {font-size:0.8em; background: #EEEEEE; padding:0.4em; margin-bottom:1em; margin-right: 1em;}
+
+.stat dt {font-weight:bold; margin:0.4em 0 0.2em 0;}
+.stat li {margin:0.2em 0;}
+.stat td {padding:0.2em;}
+.stat tr:HOVER {background: #CCCCCC;}
+
+ul.ads {padding:0px; margin:0px;}
+ul.ads li {list-style:none; margin:0 0 1.5em 0;}
+ul.ads h2 {font-size:1.2em; font-weight: normal; margin:0 0 0.3em 0;}
+
+.details ul li {margin-top:5px;}
+.details ul {margin-bottom:15px;}
+.details p {margin:5px 0px 15px 0px;}

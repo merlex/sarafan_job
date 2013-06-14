@@ -1,0 +1,17 @@
+<?php
+if ($this->users){
+	?><table cellpadding="5" cellspacing="5"><?
+	foreach ($this->users as $user){
+		
+		?>
+		<tr>
+			<td><?=$user['name'];?>&nbsp;</td>
+			<td><?=$user['count'];?></td>
+			<td style="padding:5px;"><?=$user['categories'];?></td>
+		</tr>
+		<?
+	}
+	?></table><?
+}
+echo $this->form;
+?>

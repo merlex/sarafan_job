@@ -1,0 +1,9 @@
+<?php 
+$form=$this->element;
+?>
+<form action="<?= $this->escape($this->element->getAction());?>" method="<?=$form->getMethod();?>" enctype="<?=$form->getEnctype();?>">
+<ul class="action">
+	<li class="confirm"><?=$this->element->submit;?></li>
+	<li class="cancel"><a href="<?=$this->element->cancelURL;?>"><?=$this->element->cancelText;?></a></li>
+</ul>
+</form>

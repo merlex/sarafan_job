@@ -1,0 +1,10 @@
+<ul class="h clearfix path">
+	<li><a href="<?php echo $this->url(array('controller'=>'ad','action'=>null,'id'=>null));?>">Категории</a>/</li>
+	<li><b><?php echo $this->obj->title;?></b></li>
+	<li><a href="<? echo $this->url(array('controller'=>'post','ad'=>$this->obj->id));?>">Посты</a></li>
+</ul>
+
+<?php 
+//include 'add.phtml';
+echo $this->form;
+?>

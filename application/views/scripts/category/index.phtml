@@ -1,0 +1,42 @@
+<h2>Категории</h2>
+<form method="post" action="<?=$this->url(array('controller'=>'category','action'=>'reorder'));?>">
+<table class="list">
+<?php 
+$i=0;
+foreach ($this->list as $e){	
+	?>
+	<tr class="line<?=$i%2;?>">
+		<td>
+	<a href="<?php echo $this->url(
+    array(
+        'controller' => 'category',
+        'action'     => 'edit',
+    	'id'=>$e->getID(),
+    ),
+    'default',
+    true);?>"><?php echo $e->title;?></a>
+    </td>
+    <td>
+    	<input type="text" name="order[<?php echo $e->getID();?>]" value="<?php echo $e->order_by;?>" class="orderBy"/>
+    </td>  
+    <td class="delete action">
+    <a href="<?php echo $this->url(
+    array(
+        'controller' => 'category',
+        'action'     => 'delete',
+    	'id'=>$e->getID(),
+    ),
+    'default',
+    true);?>">удалить</a>
+    </td>  
+    </tr>
+    <?
+    $i++;
+}
+?>
+</table>
+<ul class="groupActions h clearfix">
+	<li><input type="submit" value="Пересортировать"/></li>
+	<li><a href="/category/add/">Добавить</a></li>
+</ul>
+</form>

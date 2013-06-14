@@ -1,0 +1,145 @@
+<style>
+.facebook {width:100%; height:40px; background:#3B5998 url("http://static.ak.fbcdn.net/rsrc.php/zx/r/Pvubnmvx_0f.png") 10px -32px no-repeat; padding-left:120px;}
+.facebook form {font-size:11px; color:white; padding-top:5px;}
+.facebook form select {font-size:10px;}
+.post_info {font-size:10pt; background:#dfe0e1; padding:10px;}
+.comment {background:#ece9ab; font-size:10pt; font-style: italic;padding:5px;}
+.details {font-size:10pt; }
+.contacts {margin:10px 0px; border:3px solid #3B5998; padding:10px;}
+.contacts p {font-size:10pt;}
+.start_post {font-size:12pt; background:#1f8208; padding:10px; color:white; font-weight:bold; margin:10px 0px;}
+.start_post a {color:white;}
+
+#post {font-size:10pt;}
+#post h3 {font-size:10pt; font-weight:bold;}
+#post textarea {width:400px; height:100px;}
+#post {margin:10px 0px; border: 2px solid #1f8209; padding: 5px;}
+</style>
+<div class="facebook clearfix"> 
+<form action="">
+	<label>
+	пользователь перешел:
+	<select name="mode">
+		<option value="post" <? if ($this->mode=='post'){?>selected<?}?>>по реферальной ссылке</option>
+		<option value="ad" <? if ($this->mode=='ad'){?>selected<?}?>>по внутренней  ссылке</option>
+	</select>
+	</label>
+	<label>
+	авторизован:
+	<select name="auth">
+		<option value="no" <? if ($this->auth=='no'){?>selected<?}?>>нет</option>
+		<option value="read" <? if ($this->auth=='read'){?>selected<?}?>>чтение</option>
+		<option value="write" <? if ($this->auth=='write'){?>selected<?}?>>запись</option>
+	</select>
+	</label>
+	<label for="is_post"><input type="checkbox" name="is_post" value="1" style="vertical-align:middle;" <? if ($this->is_post){?>checked<?}?>>&nbsp;добавил ссылку себе</label>
+	<input type="submit" value="посмотреть">
+</form>
+</div>
+<div class="">
+<?
+if ($this->mode=='post'){
+	?>
+<div class="post_info clearfix" title="">
+Вы перешли на эту страницу по приглащению пользователя <a href="http://facebook.com">Андрей Тукманов</a><br/>
+Если вы устроитесь на эту работу, не забудьте рассказать об этом работодателю, <a href="" title="Ссылка на правила">а что после этого будет?</a>
+</div>
+<div class="comment">
+Человеку, пришедшему по объявлению, показываем информацию об источнике, и ссылку о принципах работы
+</div>
+	<?
+}
+?>
+<h1>PHP программист</h1>
+<div class="salary">80 000 руб</div>
+<div class="details">
+	Требования:
+	<ul>
+	<li>хорошее знание PHP, MySQL, Java Script, JS frameworks, Apache, CSS</li>
+	<li>умение верстать</li>
+	<li>обязательно наличие опыта в проектировании интерфейсов</li>
+	<li>умение понимать чужой код и писать свой понятным образом</li>
+	<li>умение работать в сжатые сроки и выдерживать их</li>
+	<li>опыт работы в команде, умения ставить задачи и контролировать их выполнение</li>
+	</ul>
+	Обязанности:
+	<ul>
+	<li>работа над проектами компании</li>
+	</ul>
+	Условия:
+	<ul>
+	<li>официальное оформление по ТК РФ, белая заработная плата</li>
+	<li>заработная плата обсуждается с успешным кандидатом</li>
+	</ul>
+</div>
+</div>
+<?
+if ($this->auth=='no'){
+	?>
+<div class="contacts"><a href="?mode=<? echo $this->mode;?>&auth=read" value="">Посмотреть контактную информацию</a></div>
+<div class="comment">
+Контакты показываются только после авторизации в приложении<br/>
+Это позволит вести статистику просмотров<br/>
+Так как пользователей (например меня) пугает, когда программа <b>сразу</b> просит права на запись: делаем в два шага.<br/>
+1. Хочет просмотреть детали- просим только инфу о профиле<br/>
+2. Постит- все сразу
+</div>
+	<?
+}
+else{
+	?>
+<div class="contacts info">
+<p><b>Компания: </b> Promo Interactive</p>
+<p><b>Телефон: </b> 2-211-234-54</p>
+<p><b>HH:</b> <a href="http://hh.ru/vacancy/3974177">http://hh.ru/vacancy/3974177</a></p>
+<p><b>Мой Круг:</b> <a href="http://moikrug.ru/vacancies/597302102/">http://moikrug.ru/vacancies/597302102/</a></p>
+</div>
+<div class="comment">Контактная информация</div>
+	<?
+	if ($this->auth=='write'){
+		if ($this->is_post){
+			?><div id="post">
+			По вашей ссылке уже заходили <a href="">Иван Иванов</a>, <a href="">Петр Петров</a> и <a href="">Сидор Сидоров</a><br/>
+			$100 не за горами
+			</div>
+			<div class="comment">
+			После отправки- выводим статистику
+			</div>
+			<?
+		}
+		else {
+			?>
+			<form method="get" id="post">
+				<input type="hidden" name="mode" value="<?=$this->mode;?>"/>
+				<input type="hidden" name="auth" value="write"/>
+				<input type="hidden" name="is_post" value="1"/>
+				<div>
+					<h3><a href="?post">PHP программист</a></h3>
+					<div class="desc">Срочно нужен гуру-прегуру за 80K</div>
+					<label class="your_comment">
+					Ваш комментарий:<br/>
+					<textarea rows="" cols=""></textarea>
+					</label>
+					<p><input type="submit" value="Постим!"></p>
+				</div>
+			</form>
+			<div class="comment">
+			После отправки- постим в фейсбук, и предлагаем делать это автоматически
+			</div>
+			<?
+		}
+	}
+	else {
+		?>
+		<div class="start_post">
+		Возможно, эта ссылка заинтересует кого-то из ваших друзей? Тогда на этом можно неплохо заработать.
+		<a href="?mode=<? echo $this->mode;?>&auth=write#post">Размести ссылку и сруби сто баксов</a>
+		</div>
+		<div class="comment">Предлагаем запостить себе</div>
+		<?
+	}
+}
+?>
+
+</body>
+</html>

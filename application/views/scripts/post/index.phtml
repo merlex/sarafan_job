@@ -1,0 +1,40 @@
+<h1>Посты 
+<?php
+if ($this->user){
+	?> пользователя <a href="<?=$this->url(array('controller'=>'user','action'=>'admin','id'=>$this->user->id));?>"><?=$this->user->name;?></a><?
+}
+if ($this->ad){
+	?> для объявления <a href="<?=$this->url(array('controller'=>'ad','action'=>'edit','id'=>$this->ad->id));?>"><?=$this->ad->title;?></a><?
+}
+?>
+<table class="list">
+<?php 
+$i=0;
+foreach ($this->list as $e){	
+	?>
+	<tr class="line<?=$i%2;?><? if ($e->is_admin){?> admin<?}?>">
+	<?
+	if (!$user){
+	?>
+	<td class="action">
+<a href="<?=$this->url(array('controller'=>'user','action'=>'admin','id'=>$e->user_id),null,true);?>"><?=$e->user_name;?></a>
+    </td>
+    <?
+	}
+	if (!$ad){
+		?>
+	<td class="action">
+<a href="<?=$this->url(array('controller'=>'ad','action'=>'edit','id'=>$e->ad_id),null,true);?>"><?=$e->ad_title;?></a>
+    </td>
+    	<?	
+	}
+	?>
+	<td class="action"><?=date('d.m.Y H:i',$e->ts);?></td>
+	</tr><?
+	$i++;
+}
+    ?>
+    </table>
+<?php 
+echo $this->pages;
+?>

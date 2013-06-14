@@ -1,0 +1,25 @@
+<h1><? echo $this->user->name;?></h1>
+<div>Зарегистрирован: <?=date('d.m.Y H:i',$this->user->ts);?></div>
+<div>
+<?
+if ($this->user->is_post){
+	?>Есть привелегии на запись <a href="<? echo $this->url(array('controller'=>'post','user'=>$this->user->id),null,true);?>">посты</a><?
+}
+else {
+	?>Нет привелегий на запись<?
+}
+?></div>
+<div class="admin">
+<?
+if ($this->user->is_admin){
+	?><p>Есть права администратора</p><?
+	$this->form->setSubmitText('Снять права администратора');
+	echo $this->form;
+}
+else {
+	?><p>Нет прав администратора</p><?
+	$this->form->setSubmitText('Назначить администратором');
+	echo $this->form;
+}
+?>
+</div>

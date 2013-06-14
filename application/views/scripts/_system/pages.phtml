@@ -1,0 +1,42 @@
+<?php 
+if ($this->pageCount>1){
+?>
+<div class="pages">
+	<ul class="arr clearfix">
+		<li class="larr">
+		<?php
+			if (isset($this->previous)){
+				?><a href="<?=$this->url(array('page'=>$this->previous));?>">&larr;</a><?
+			} 
+			else {
+				?>&larr;<?php
+			}
+		?>
+		</li>
+		<li class="rarr">
+		<?php
+			if (isset($this->next)){
+				?><a href="<?=$this->url(array('page'=>$this->next));?>">&rarr;</a><?
+			} 
+			else {
+				?>&rarr;<?php
+			}
+		?>
+		</li>
+	</ul>
+	<ul class="clearfix">
+	<?php foreach ($this->pagesInRange as $page): ?>
+		<li>
+		<?php if ($page==$this->current){?>
+			<b><?php echo $page;?></b>
+		<?php }else{?>
+			<a href="<?php echo $this->url(array('page'=>$page));?>"><?php echo $page;?></a>
+		<?php }?>		
+		</li>
+	<?php endforeach;?>
+	</ul>
+</div>
+<?	
+	
+}
+?>

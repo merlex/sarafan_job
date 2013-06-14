@@ -1,0 +1,50 @@
+<h2>Пользователи</h2>
+<ul class="groupActions h clearfix">
+<?php 
+	
+	foreach ($this->show_modes as $modeID=>$modeItem){
+		?><li <? if ($this->show_mode==$modeID){?> class="selected"<?php }?>><a href="<?=$modeItem['url'];?>"><?=$modeItem['title'];?></a></li><?	
+	}
+?>
+<li>
+<form method="get" action="<? echo $this->url(array('search'=>null));?>"><input type="text" name="search" value="<?=htmlspecialchars($this->search);?>"/><input type="submit" value="Поиск"/></form>
+</li>
+</ul>
+<table class="list">
+<?php 
+$i=0;
+foreach ($this->list as $e){	
+	?>
+	<tr class="line<?=$i%2;?><? if ($e->is_admin){?> admin<?}?>">
+		<td>
+	<?php echo $e->name;?>
+    </td>
+    <td class="action">
+    	<a href="<? echo $this->url(array('action'=>'admin','id'=>$e->id));?>">
+    	<?
+  		if ($e->is_admin){
+  			?>администратор<?
+    	}
+    	elseif($e->is_post) {
+    		?>писатель<?
+    	}
+    	else {
+    		?>читатель<?
+    	}
+    	?>
+    	</a>    	    
+    </td>
+    <td class="action">
+    	<?
+    	if ($e->is_post){
+    		?><a href="<? echo $this->url(array('controller'=>'post','action'=>null,'user'=>$e->id));?>">посты</a><?
+    	}
+    	?>
+    </td>
+    </tr>
+    <?
+    $i++;
+}
+?>
+</table>
+</form>

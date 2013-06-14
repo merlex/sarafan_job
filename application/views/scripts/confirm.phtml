@@ -1,0 +1,8 @@
+<form action="<?//= $this->escape($this->form->getAction());?>">
+
+<p class="message"><?=$this->element->message;?></p>
+<ul class="action">
+	<li class="confirm"><?=$this->element->submit;?></li>
+	<li class="cancel"><a href="<?=$this->element->cancelURL;?>"><?=$this->element->cancelText;?></a></li>
+</ul>
+</form>

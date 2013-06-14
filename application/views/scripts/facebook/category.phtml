@@ -1,0 +1,23 @@
+<?php
+if ($this->cat){
+	?><h1><? echo $this->cat->title;?></h1><?
+}
+?>
+<ul class="ads">
+<?
+foreach ($this->list as $ad){
+	?>
+	<li>
+		<h2><a href="<?=$this->url(array('controller'=>'facebook','action'=>'ad','id'=>$ad->id,),null,true);?>"><?=$ad->title;?></a></h2>
+		<?
+		if ($ad->price){?><p class="salary"><? echo $ad->price;?></p><?}
+		?>
+		<p class="announce"><? echo $ad->announce;?></p>
+	</li>
+	<?
+}
+?>
+</ul>
+<?php 
+echo $this->pages;
+?>

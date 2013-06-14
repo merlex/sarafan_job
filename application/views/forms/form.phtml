@@ -1,0 +1,12 @@
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+<?php
+$form=$this->element;
+if (false) $form= new Op_Form();
+?>
+<dl class="ckeditor">
+<?
+foreach ($form->getElements() as $k=>$element){
+	echo $k,'<br/>';
+}
+?>
+</dl>

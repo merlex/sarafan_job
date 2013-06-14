@@ -1,0 +1,19 @@
+<ul class="h clearfix path">
+	<li><a href="<?php echo $this->url(array('controller'=>'category','action'=>null,'id'=>null));?>">Категории</a>/</li>
+	<li><b>Удалить</b></li>
+</ul>
+<?php 
+if ($this->form){
+	?>
+	<h2>Вы действительно хотите удалить "<?php echo $this->obj->title;?>"?</h2>
+	<?php 
+	echo $this->form;
+}
+else {
+	?>
+	<p class="error">
+	Удаление невозможно. У категории <?=$this->obj->title;?> имеются связанные записи
+	</p>
+	<?
+}
+?>

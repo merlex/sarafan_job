@@ -1,0 +1,30 @@
+<?php
+$form=$this->element;
+if (false) $form= new Op_Form();
+
+?>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+<form action="<? echo $form->getAction();?>" method="<? echo $form->getMethod();?>" enctype="<? echo $form->getEnctype();?>"> 
+<dl class="ckeditor">
+<?
+foreach ($form->getElements() as $k=>$element){	
+	if ($k=='submit'||$k=='hash') continue;	
+	echo $element;
+	if ($element->getAttrib('editor')){		
+		?>
+<script type="text/javascript">
+CKEDITOR.replace( '<?=$element->id;?>',{toolbar:'Sarafan'});
+</script>
+		<?
+	}
+}
+?>
+</dl>
+<div class="submit">
+<?
+echo $form->hash; 
+if (!$form->submit->getLabel()) $form->submit->setLabel('Сохранить');
+echo $form->submit;
+?>
+</div>
+</form>

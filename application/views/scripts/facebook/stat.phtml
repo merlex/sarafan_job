@@ -1,0 +1,16 @@
+<h2>Мои посты</h2>
+<table class="stat">
+<?php
+foreach ($this->list as $post){
+	?>
+<tr>
+	<td><a href="<?=$this->url(array('controller'=>'facebook','action'=>'stat','id'=>$post->id));?>">
+		<?=$post->title;?>
+	</a></td>
+	<td nowrap="nowrap" style="white-space: nowrap;"><?=date('Y.m.d H:i',$post->ts);?></td></tr><?
+}
+?>
+</table>
+<?
+echo $this->pages;
+?>
